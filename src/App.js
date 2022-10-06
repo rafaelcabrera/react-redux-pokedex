@@ -4,8 +4,8 @@ import logo from './statics/logo.svg'
 import Searcher from './components/Searcher';
 import { Col } from 'antd';
 import './App.css';
-import PokemonCard from './components/PokemonCard';
-import {getPokemon } from './api'
+// import {getPokemon } from './api'
+import PokemonList from './components/PokemonList';
 // import { Component } from 'react-redux'
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
       <Col span={8} offset={8}>
         <Searcher />
       </Col>
-      <PokemonCard/>
+      <PokemonList/>
     </div>
   );
 }
