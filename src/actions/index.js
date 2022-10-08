@@ -1,6 +1,6 @@
 // // en los actions creators es una función que retorna un action, un objeto que describe lo que va a pasar
 import { getPokemonDetails } from "../api";
-import { SET_POKEMONS , SET_LOADING} from "./types";
+import { SET_POKEMONS , SET_LOADING, SET_FAVORITE} from "./types";
 
 
 export const setPokemons = (payload) => ({
@@ -10,6 +10,11 @@ export const setPokemons = (payload) => ({
 
 export const setLoading = (payload) => ({
     type: SET_LOADING,
+    payload,
+})
+
+export const setFavorites = (payload) => ({
+    type:SET_FAVORITE,
     payload,
 })
 
