@@ -6,18 +6,21 @@ import logo from "./statics/logo.svg";
 import Searcher from "./components/Searcher";
 import { Col } from "antd";
 import "./App.css";
-import { getPokemon } from "./api";
+import { getPokemon, getPokemonDetails} from "./api";
 import PokemonList from "./components/PokemonList";
 import { setPokemons } from "./actions";
 
 function App() {
   // const [pokemons,setPokemons] = useState([]);
-  const pokemons = useSelector((state => state.pokemons))
-  const dispatch= useDispatch();
+  const pokemons = useSelector((state) => state.pokemons);
+  const dispatch = useDispatch();
   useEffect(() => {
     const fetchPokemons = async () => {
       const pokemonsRes = await getPokemon();
-      dispatch(setPokemons(pokemonsRes)); //agrego el dispatcher de aca
+      const pokemonDetailed = await Promise.all(
+        pokemonsRes.map((pokemon) => getPokemonDetails(pokemon))
+      );
+      dispatch(setPokemons(pokemonDetailed)); //agrego el dispatcher de aca
     };
     fetchPokemons();
   }, []);
