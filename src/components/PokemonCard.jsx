@@ -17,3 +17,5 @@ const PokemonCard = ({name,image}) => {
 };
 
 export default PokemonCard;
+
+//podríamos pedir que el componente realice la petición de los detalles pero lo hacemos con redux thunk

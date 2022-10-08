@@ -6,9 +6,9 @@ import logo from "./statics/logo.svg";
 import Searcher from "./components/Searcher";
 import { Col } from "antd";
 import "./App.css";
-import { getPokemon, getPokemonDetails} from "./api";
+import { getPokemon} from "./api";
 import PokemonList from "./components/PokemonList";
-import { setPokemons } from "./actions";
+import { getPokemonsWithDetails } from "./actions";
 
 function App() {
   // const [pokemons,setPokemons] = useState([]);
@@ -17,13 +17,11 @@ function App() {
   useEffect(() => {
     const fetchPokemons = async () => {
       const pokemonsRes = await getPokemon();
-      const pokemonDetailed = await Promise.all(
-        pokemonsRes.map((pokemon) => getPokemonDetails(pokemon))
-      );
-      dispatch(setPokemons(pokemonDetailed)); //agrego el dispatcher de aca
+      dispatch(getPokemonsWithDetails(pokemonsRes)); //agrego el dispatcher de aca
     };
     fetchPokemons();
   }, []);
+  
   return (
     <div className="App">
       <Col span={4} offset={10}>
